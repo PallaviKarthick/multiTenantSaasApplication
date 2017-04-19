@@ -1,0 +1,36 @@
+<!DOCTYPE html >
+<html>
+
+    <head>
+      <title> Login </title>
+      <style>
+      .login{position:relative;
+      left:460px;
+      border: 1px solid black;
+      border-radius:5px;
+      width:400px;
+      padding:10px;}
+      </style>
+    </head>
+    <body>
+      <div class="login">
+      <section class="one">
+      <h1 style = "text-align:center">  Login </h1>
+      <form role="form" id='grade' action='indexcustom.php' method='POST' accept-charset='UTF-8'>
+      <p>Username: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="username" value=""></p>
+      <p>Student ID: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="id" value=""></p>
+
+
+      <p>  <h4>Select Grading Attributes:  </h4></p>
+            <input type="checkbox" name="scale" value="scale"> Scale<br>
+            <input type="checkbox" name="points" value="points"> Points<br>
+            <input type="checkbox" name="completeNotComplete" value="completeNotComplete"> Complete/ Not Complete<br>
+            <input type="checkbox" name="comments" value="comments" checked> Comments <br>
+
+      <p>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <button type="submit" style ="width:100px; ">Login</button><br></p>
+    </section>
+    </body>
+</html>
