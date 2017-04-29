@@ -21,6 +21,8 @@
 
 <?php
 session_start();
+header("Cache-Control: no cache");
+session_cache_limiter("private_no_expire");
 if($_FILES["zip_file"]["name"]) {
 	$filename = $_FILES["zip_file"]["name"];
 	$source = $_FILES["zip_file"]["tmp_name"];
@@ -31,31 +33,32 @@ if($_FILES["zip_file"]["name"]) {
 	echo "</br>";
 	
 	$name = explode(".", $filename);
-	$accepted_types = array('application/zip', 'application/x-zip-compressed', 'multipart/x-zip', 'application/x-compressed');
-	foreach($accepted_types as $mime_type) {
+	$types = array('application/zip');
+	foreach($types as $mime_type) {
 		if($mime_type == $type) {
-			$okay = true;
 			break;
 		} 
 	}
 	
 	$continue = strtolower($name[1]) == 'zip' ? true : false;
 	if(!$continue) {
-		$message = "The file you are trying to upload is not a .zip file. Please try again.";
+		$message = "The file has to be of .zip type";
 	}
-
-	$target_path = "/Users/pallavikarthick/Documents/git/cmpe281/multiTenantSaasApplication/src/".$filename;  // change this to the correct site path
+    $pwd= getcwd();
+	//echo "----pwd--:". $pwd;
+	//echo "----filename--:". $filename;
+	$target_path = $pwd."/".$filename;  // change this to the correct site path
 	//echo "--target_path--" . $target_path ."</br>";
 	//echo "---source-" . $source;
 	$folderName = substr($filename, 0, -4);
-    $pathName = "/Users/pallavikarthick/Documents/git/cmpe281/multiTenantSaasApplication/src/".$folderName ;
+    $pathName = $pwd."/".$folderName ;
 	
 if(move_uploaded_file($source, $target_path)) {
 		$zip = new ZipArchive();
 		$x = $zip->open($target_path);
 		if ($x === true) {
 			shell_exec('mkdir '.$folderName);
-			$zip->extractTo("/Users/pallavikarthick/Documents/git/cmpe281/multiTenantSaasApplication/src/".$folderName); // change this to the correct site path
+			$zip->extractTo($pwd."/".$folderName); // change this to the correct site path
 			$zip->close();
 	
 			unlink($target_path);
@@ -65,11 +68,11 @@ if(move_uploaded_file($source, $target_path)) {
 		//echo 'java -jar umlparser.jar ' .$pathName;
         shell_exec('java -jar umlparser.jar ' .$pathName);
 
-		//echo $message;
+		$imgName = $folderName.".png";
        echo ' 
 
 
-<img src="test1.png"  title="uml-parser" alt="uml-parser" />
+<img src='."'". $imgName ."'".'title="uml-parser" alt="uml-parser" />
 </div>
 ';
 	} else {	

@@ -19,7 +19,10 @@
   <div class="row" >
       <?php
      session_start();
+     header("Cache-Control: no cache");
+     session_cache_limiter("private_no_expire");
      extract($_POST);
+     $tenant;
      if(isset($_POST['tenantA'])){
      $tenant = $_POST['tenantA'];
     // echo $tenant;
@@ -32,10 +35,12 @@
      $tenant = $_POST['tenantC'];
     // echo $tenant;
      }
-     else{
+     elseif(isset($_POST['tenantD'])){
          $tenant = $_POST['tenantD'];
      }
+     if($tenant){
      $_SESSION['tenant']=$tenant;
+     }
   
     //echo $tenant;
       ?>
@@ -47,24 +52,6 @@
       <p><button  type="submit" style="align:right;width:100px;" class="btn btn-sm btn-primary">Upload</button><br></p>
       </form>
   
-    
-   
-
-<script type="text/javascript">
-        function addimage() { 
-
-          var img = document.createElement("img");
-          img.src = "output\test2.png"; 
-          img.height = 60; 
-          img.width = 100;
-
-          //optionally set a css class on the image
-          var class_name = "foo";
-          img.setAttribute("class", class_name);
-
-          document.body.appendChild(img);
-        }
-</script>
 
 </body>
 </html>
