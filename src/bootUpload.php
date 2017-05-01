@@ -36,7 +36,7 @@
     // echo $tenant;
      }
      elseif(isset($_POST['tenantD'])){
-         $tenant = $_POST['tenantD'];
+     $tenant = $_POST['tenantD'];
      }
      if($tenant){
      $_SESSION['tenant']=$tenant;
