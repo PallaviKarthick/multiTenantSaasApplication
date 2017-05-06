@@ -1,7 +1,7 @@
 # multiTenantSaasApplication
 
 
-Objectives: Project is a Multi-Tenant, Cloud Scale, Multi-AZ SaaS App
+Objective: Project is a Multi-Tenant, Cloud Scale, Multi-AZ SaaS App
 
 Requirements:
 Build a Single Page App for the Java Source Code to be submitted and graded.
