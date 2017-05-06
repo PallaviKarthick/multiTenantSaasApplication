@@ -1,0 +1,55 @@
+Create Launch Confg
+    choose AMI
+    enable cloud watch
+    Assign a public IP address to every instance.
+
+Create Auto Scaling Group
+    group size -1
+    select all subnets
+    scaling policies
+
+   // this will shoot up 1 instance
+
+Create ALB(aplication load balancer)
+    In this will create 1 TG(target group)
+    add ec-2 instance create by Auto Scaling Group
+
+create 4 TG (tenant TG)
+    configure instance in each TG(ie. each tenant which IP it has to route to)
+    Target-> EDIT
+
+IN ALB
+    Add listeners
+    route based on URL (maping of URL to TG )
+
+hit ALB DNS n verify
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
